@@ -23,21 +23,18 @@ Dataset used: World Bank (https://data.worldbank.org/)
 
 Indicators to be used:
 1. Economic growth:
-    - Indicator Name: GDP growth
-    - Indicator Code: NY.GDP.MKTP.KD.ZG
-2. Population growth:
-    - Indicator Name: Population growth (annual %)
-    - Indicator Code: SP.POP.GROW
-3. Total population:
+    - Indicator Name: GDP
+    - Indicator Code: NY.GDP.MKTP.CD
+2. Total population:
     - Indicator Name: Population, total
     - Indicator Code: SP.POP.TOTL
-4. Net migration:
+3. Net migration:
     - Indicator Name: Net migration
     - Indicator Code: SM.POP.NETM
-5. Natural birth rate:
+4. Natural birth rate:
     - Indicator Name: Birth rate, crude (per 1000 people)
     - Indicator Code: SP.DYN.CBRT.IN
-6. Longevity:
+5. Longevity:
     - Indicator Name: Life expectancy at birth, total (years)
     - Indicator Code: SP.DYN.LE00.IN
 
