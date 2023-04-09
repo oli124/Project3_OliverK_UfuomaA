@@ -45,11 +45,11 @@ def population():
     pop_query = session.query(
         Population.country_name,
         Population.country_code,
-        Population.population_change,
-        Population.net_migration,
-        Population.mean_natural_birth_rate,
-        Population.longevity_change,
-        Population.gdp_change).all()
+        Population.population_pct_change,
+        Population.net_migration_pct_of_pop,
+        Population.avg_birth_rate_per1000,
+        Population.longevity_pct_change,
+        Population.gdp_pct_change).all()
 
     # Reformat into list
     # pop_query_list = list(pop_query)
@@ -60,11 +60,11 @@ def population():
     data_list = [{
         'country_name': i.country_name,
         'country_code': i.country_code,
-        'population_change': i.population_change,
-        'net_migration': i.net_migration,
-        'mean_natural_birth_rate': i.mean_natural_birth_rate,
-        'longevity_change': i.longevity_change,
-        'gdp_change': i.gdp_change}
+        'population_change': i.population_pct_change,
+        'net_migration': i.net_migration_pct_of_pop,
+        'mean_natural_birth_rate': i.avg_birth_rate_per1000,
+        'longevity_change': i.longevity_pct_change,
+        'gdp_change': i.gdp_pct_change}
         for i in pop_query]
     
     return jsonify(data_list)

@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project 3</title>
 </head>
 <body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 jumbotron text-center">
+            <h1>What are the key demographic drivers of economic growth?</h1>
+            <p>Data: World Bank, 1990-2019 (30 years)</p>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="col-md-5">
+            <div id="scatter_1"></div>
+          </div>
+          <div class="col-md-5">
+            <div id="scatter_2"></div>
+          </div>
+          <div class="col-md-5">
+            <div id="scatter_3"></div>
+          </div>
+          <div class="col-md-5">
+            <div id="scatter_4"></div>
+          </div>
+        </div>        
+    </div>
+    
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- <script src="{{ url_for('static', filename='js/index.js') }}"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="./static/js/app.js"></script>
+
 </body>
+
 </html>
