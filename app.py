@@ -17,7 +17,7 @@ Base = automap_base()
 Base.prepare(autoload_with=engine)
 
 # Save reference to the table
-Population = Base.classes.population
+Info = Base.classes.all_info
 
 #################################################
 # Flask Setup
@@ -42,14 +42,21 @@ def population():
     """Return a list of countries and their respective datapoints"""
     # Query 
       
-    pop_query = session.query(
-        Population.country_name,
-        Population.country_code,
-        Population.population_pct_change,
-        Population.net_migration_pct_of_pop,
-        Population.avg_birth_rate_per1000,
-        Population.longevity_pct_change,
-        Population.gdp_pct_change).all()
+    info_query = session.query(
+        Info.country_name,
+        Info.country_code,
+        Info.population_pct_change,
+        Info.net_migration_pct_of_pop,
+        Info.avg_birth_rate_per1000,
+        Info.longevity_pct_change,
+        Info.gdp_pct_change,
+        Info.capital,
+        Info.continent,
+        Info.population_2020,
+        Info.population_1990,
+        Info.area_km2,
+        Info.density_per_km2,
+        Info.world_population_pct).all()
 
     # Reformat into list
     # pop_query_list = list(pop_query)
@@ -64,8 +71,15 @@ def population():
         'net_migration': i.net_migration_pct_of_pop,
         'mean_natural_birth_rate': i.avg_birth_rate_per1000,
         'longevity_change': i.longevity_pct_change,
-        'gdp_change': i.gdp_pct_change}
-        for i in pop_query]
+        'gdp_change': i.gdp_pct_change,
+        'capital': i.capital,
+        'continent': i.continent,
+        'population_2020': i.population_2020,
+        'population_1990': i.population_1990,
+        'area_km2': i.area_km2,
+        'density_per_km2': i.density_per_km2,
+        'world_population_pct': i.world_population_pct
+        } for i in info_query]
     
     return jsonify(data_list)
 
