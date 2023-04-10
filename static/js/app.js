@@ -1,3 +1,8 @@
+// let spearson = require("../../lib/spearson.js");
+import spearson from "../../lib/spearson.js";
+// let Statistics = require("../../lib/statistics.js");
+// import Statistics from '../../lib/statistics.js';
+
 d3.json('/population_data').then(function(data) {
     console.log(data);
 
@@ -10,7 +15,7 @@ d3.json('/population_data').then(function(data) {
     let net_mig = data.map(x => x.net_migration);    
     let population = data.map(x => x.population_change);
     
-    // Create trace for first scatter: population growth rate vs. gdp growth rate
+    // Create traces for scatters
     let trace1 = {
         x: gdp,
         y: population,
@@ -26,7 +31,7 @@ d3.json('/population_data').then(function(data) {
         type: 'scatter',
         text: country_names
     }
-
+    
     let trace3 = {
         x: gdp,
         y: birth_rates,
@@ -34,7 +39,7 @@ d3.json('/population_data').then(function(data) {
         type: 'scatter',
         text: country_names
     }
-
+    
     let trace4 = {
         x: gdp,
         y: longevity,
@@ -42,6 +47,8 @@ d3.json('/population_data').then(function(data) {
         type: 'scatter',
         text: country_names
     }
+
+
     // Data trace arrays
     let traceDataOne = [trace1];
     let traceDataTwo = [trace2];
@@ -78,5 +85,18 @@ d3.json('/population_data').then(function(data) {
     Plotly.newPlot("scatter_2", traceDataTwo, layout2);
     Plotly.newPlot("scatter_3", traceDataThree, layout3);
     Plotly.newPlot("scatter_4", traceDataFour, layout4);
+
+
+    // Calculate and define correlations for 4 traces
+    let corrOne = spearson.correlation.pearson(gdp, population);
+    let corrTwo = spearson.correlation.pearson(gdp, net_mig);
+    let corrThree = spearson.correlation.pearson(gdp, birth_rates);
+    let corrFour = spearson.correlation.pearson(gdp, longevity);
+
+    // Append correlation values to div buckets
+    d3.select("corr_1").text(`Correlation: ${corrOne}`);
+    d3.select("corr_2").text(`Correlation: ${corrTwo}`);
+    d3.select("corr_3").text(`Correlation: ${corrThree}`);
+    d3.select("corr_4").text(`Correlation: ${corrFour}`);
 
 })

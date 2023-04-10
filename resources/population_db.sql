@@ -8,4 +8,17 @@ CREATE TABLE population(
 	gdp_pct_change FLOAT(50) NOT NULL
 );
 
-SELECT * FROM population;
+
+CREATE TABLE country_info(
+	country_code VARCHAR(50) NOT NULL,
+	country_name VARCHAR(50) NOT NULL PRIMARY KEY REFERENCES population(country_name),
+	capital VARCHAR(50) NOT NULL,
+	continent VARCHAR(50) NOT NULL,
+	population_2020 FLOAT(50) NOT NULL,
+	population_1990 FLOAT(50) NOT NULL,
+	area_km2 FLOAT(50) NOT NULL,
+	density_per_km2 FLOAT(50) NOT NULL,
+	world_population_pct FLOAT(50) NOT NULL
+);
+
+SELECT * FROM country_info;
