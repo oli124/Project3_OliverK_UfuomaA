@@ -81,6 +81,7 @@ d3.json('/population_data').then(function(data) {
     Plotly.newPlot("scatter_3", traceDataThree, layout3);
     Plotly.newPlot("scatter_4", traceDataFour, layout4);
 
+    // Calculate correlations
     const pcorr = (x, y) => {
       let sumX = 0,
         sumY = 0,
@@ -128,7 +129,7 @@ function init(){
     let i = 0
     let value = country_names[i];
     // console.log(value)
-    // Run for loop to append sample id's to dropdown list
+    // Run for loop to append country names to dropdown list
     for (i=0; i<country_names.length; i++){
       dropdownMenu.append("option")
       .text(country_names[i])
@@ -158,11 +159,11 @@ function init(){
     console.log(selection)
     let selectionOne = selection[0];
     let key = 0
-    // Select and clear contents of demographic info window (prior to repopulating)
+    // Select and clear contents of country info window (prior to repopulating)
     let countryInput = d3.select("#sample-metadata");
     countryInput.html("");
       
-    // Run for loop that appends key and object datapoints of selected sample id
+    // Run for loop that appends key and object datapoints of selected country
     for (key in selectionOne){
       countryInput.append("h6")
       .text(`${key}: ${selectionOne[key]}`);
