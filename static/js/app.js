@@ -99,11 +99,7 @@ d3.json('/population_data').then(function(data) {
       x.forEach(reduce);
       return (minLength * sumXY - sumX * sumY) / Math.sqrt((minLength * sumX2 - sumX * sumX) * (minLength * sumY2 - sumY * sumY));
     };
-    // let arrX = gdp;
-    // let arrY = longevity;
-    // let R = pcorr(arrX, arrY);
-    // console.log('arrX', arrX, 'arrY', arrY, 'R', R);
-
+    
     // Calculate and define correlations for 4 traces
     let corrOne = pcorr(gdp, population);
     let corrTwo = pcorr(gdp, net_mig);
