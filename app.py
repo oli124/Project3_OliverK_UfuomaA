@@ -2,6 +2,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+from config import password
 
 from flask import Flask, jsonify, render_template
 
@@ -9,7 +10,7 @@ from flask import Flask, jsonify, render_template
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("postgresql://postgres:C%40ptainM!ng1918@localhost/population_db")
+engine = create_engine("postgresql://postgres:" + password + "@localhost/population_db")
 
 # reflect an existing database into a new model
 Base = automap_base()
